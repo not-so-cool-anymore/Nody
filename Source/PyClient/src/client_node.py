@@ -1,9 +1,6 @@
 import socket
-import time
-import sys
 import os
 import traceback
-sys.path.append("/home/Nody/Source/PyClient/src")
 import src.read_data as read
 import src.get_sys_data as gsd
 import src.send_to_remote as r_send
@@ -25,12 +22,12 @@ try:
     r_send.send_to_remote(node_socket, name_data)
 
     r_send.send_to_remote(node_socket, device_owner_data)
-    #node_socket.send(location_data.encode())
-    #node_socket.send(name_data.encode())
+
     # Starts data reading and sending
-    #while 1:
-        # for i in range(received_data.count()):
-            # client_socket.sendall(received_data[i])
+    while 1:
+        received_data = read.read()
+        for i in range(received_data.count()):
+            r_send.send_to_remote(node_socket, received_data[i])
 
 except Exception as exc:
     print(traceback.format_exc())
