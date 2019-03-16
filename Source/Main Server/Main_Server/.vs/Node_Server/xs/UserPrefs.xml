@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{AFB065B4-66B9-421A-8542-B98D93BBF085}|Default">
+  <MonoDevelop.Ide.ItemProperties.Node__Server PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Node_Server/ClientPrivateThread.cs">
+    <Files>
+      <File FileName="Node_Server/CommunicationHandling.cs" Line="19" Column="17" />
+      <File FileName="Node_Server/NodePrivateThread.cs" Line="1" Column="14" />
+      <File FileName="Node_Server/NodesServer.cs" Line="17" Column="10" />
+      <File FileName="Node_Server/ClientsServer.cs" Line="88" Column="70" />
+      <File FileName="Node_Server/GlobalVariables.cs" Line="14" Column="6" />
+      <File FileName="Node_Server/DataFormattingClass.cs" Line="10" Column="19" />
+      <File FileName="Node_Server/ConnectedClient.cs" Line="16" Column="39" />
+      <File FileName="Node_Server/ConnectedNode.cs" Line="18" Column="21" />
+      <File FileName="Node_Server/ClientPrivateThread.cs" Line="6" Column="29" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

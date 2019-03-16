@@ -11,5 +11,5 @@ def send_to_remote(sock, data):
     print(type(data_bytes))
 
     sock.sendall(data_bytes)  # sending the data
-    time.sleep(0.2)
+    time.sleep(0.5)
 
