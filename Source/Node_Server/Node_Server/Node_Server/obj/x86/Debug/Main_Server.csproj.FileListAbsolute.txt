@@ -9,3 +9,17 @@
 /home/ivan/Projects/Node_Server/Node_Server/bin/Debug/Google.Protobuf.xml
 /home/ivan/Projects/Node_Server/Node_Server/bin/Debug/MySql.Data.xml
 /home/ivan/Projects/Node_Server/Node_Server/obj/x86/Debug/Main_Server.csproj.CopyComplete
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\Node_Server.exe.config
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\Node_Server.exe
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\Node_Server.pdb
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\Google.Protobuf.dll
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\MySql.Data.dll
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\Google.Protobuf.xml
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\MySql.Data.xml
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\obj\x86\Debug\Main_Server.csprojAssemblyReference.cache
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\obj\x86\Debug\Main_Server.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\obj\x86\Debug\Main_Server.csproj.CopyComplete
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\obj\x86\Debug\Node_Server.exe
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\obj\x86\Debug\Node_Server.pdb
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\Sodium.dll
+C:\Users\Ivan\Desktop\Nody\Source\Node_Server\Node_Server\Node_Server\bin\Debug\Google.Protobuf.pdb

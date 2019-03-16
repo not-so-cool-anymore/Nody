@@ -16,7 +16,7 @@ namespace Nody
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Nody_Auth());
+            Application.Run(new EstablishConnectionForm());
         }
     }
 }

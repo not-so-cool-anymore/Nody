@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 namespace Node_Server
 {
     public class NodePrivateThread
     {
-        public static void CollectData(TcpClient node, string name)
+        public static void CollectData(TcpClient node, string name, string location)
         {
+            
             try
             {
                 while (true)
@@ -15,20 +17,27 @@ namespace Node_Server
                     string[] receivedData = DataFormattingClass.FormatReceivedFromNode(node);
                     string dataType = receivedData[0];
                     string dataValue = receivedData[1];
-                    Console.WriteLine(dataType);
+
+                    Console.WriteLine(">> " + dataType);
+
                     if (dataType.Equals("temp"))
                     {
                         float tempValueAsFloat = float.Parse(dataValue);
-                        GlobalVariables.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedTempData.Add(tempValueAsFloat);
+                        GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedTempData.Add(tempValueAsFloat);
+                        File.WriteAllText(@"\nodes\" + name + "<-->" + location + "temp.txt", dataValue + Environment.NewLine);
+                        
                     }
                     else if (dataType.Equals("humid"))
                     {
                         float humidValueAsFloat = float.Parse(dataValue);
-                        GlobalVariables.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedHumidData.Add(humidValueAsFloat);
+                        GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedHumidData.Add(humidValueAsFloat);
+                        File.WriteAllText(@"\nodes\" + name + "<-->" + location + "humid.txt", dataValue + Environment.NewLine);
+                        
                     }
                     else if (dataType.Equals("sound"))
                     {
-                        GlobalVariables.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedSoundData.Add(dataValue);
+                        GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedSoundData.Add(dataValue);
+                        File.WriteAllText(@"\nodes\" + name + "<-->" + location + "sound.txt", dataValue + Environment.NewLine);
                     }
                     else
                     {
@@ -44,10 +53,10 @@ namespace Node_Server
         }
         public static void RemoveNode(string name)
         {
-            int clientId = GlobalVariables.connectedNodes.First(node => node.Name.Equals(name)).Id;
+            int clientId = GlobalVariablesClass.connectedNodes.First(node => node.Name.Equals(name)).Id;
 
-            GlobalVariables.connectedNodes.Remove(GlobalVariables.connectedNodes.First(node => node.Name.Equals(name)));
-            GlobalVariables.nodesCachedIDs.Add(clientId);
+            GlobalVariablesClass.connectedNodes.Remove(GlobalVariablesClass.connectedNodes.First(node => node.Name.Equals(name)));
+            GlobalVariablesClass.nodesCachedIDs.Add(clientId);
 
             Console.WriteLine(">> NODE disconnected the server");
         }

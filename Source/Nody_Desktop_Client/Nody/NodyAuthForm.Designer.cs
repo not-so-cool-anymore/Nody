@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Nody_Auth));
             this.welcomePanel = new System.Windows.Forms.Panel();
             this.upperPanel = new System.Windows.Forms.Panel();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@
             this.registerLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.loginUserControl = new Nody.LoginUserControl();
+            this.registerUserControl = new Nody.RegisterUserControl();
             this.welcomePanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             this.SuspendLayout();
@@ -140,15 +142,25 @@
             this.loginUserControl.Size = new System.Drawing.Size(511, 420);
             this.loginUserControl.TabIndex = 1;
             // 
+            // registerUserControl
+            // 
+            this.registerUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.registerUserControl.Location = new System.Drawing.Point(0, 142);
+            this.registerUserControl.Name = "registerUserControl";
+            this.registerUserControl.Size = new System.Drawing.Size(511, 420);
+            this.registerUserControl.TabIndex = 2;
+            // 
             // Nody_Auth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(511, 560);
+            this.Controls.Add(this.registerUserControl);
             this.Controls.Add(this.loginUserControl);
             this.Controls.Add(this.welcomePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Nody_Auth";
             this.Text = "Nody Login";
             this.welcomePanel.ResumeLayout(false);
@@ -169,6 +181,7 @@
         private System.Windows.Forms.Panel upperPanel;
         private System.Windows.Forms.Label exitLabel;
         private System.Windows.Forms.Label nameLabel;
+        private RegisterUserControl registerUserControl;
     }
 }
 

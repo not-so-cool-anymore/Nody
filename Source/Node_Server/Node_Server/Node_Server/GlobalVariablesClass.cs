@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+ 
+
 namespace Node_Server
 {
-    public class GlobalVariables
+    public class GlobalVariablesClass
     {
         public static int connectedNodesCounter = 0;
         public static int connectedClientsCounter = 0;
@@ -11,5 +14,7 @@ namespace Node_Server
         public static List<ConnectedClient> connectedClients = new List<ConnectedClient>();
         public static List<int> nodesCachedIDs = new List<int>();
         public static List<int> clientsCachedIDs = new List<int>();
+        public static RSAParameters serverPrivateKey;
+        public static string serverPublicKey = String.Empty;
     }
 }

@@ -8,3 +8,16 @@ C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.csproj.CoreCompileInputs.cac
 C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.exe
 C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.pdb
 C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.LoginUserControl.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\bin\Debug\Nody.exe.config
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\bin\Debug\Nody.exe
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\bin\Debug\Nody.pdb
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.EstablishConnectionForm.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.LoginUserControl.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.Nody_Auth.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.Properties.Resources.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.csproj.GenerateResource.cache
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.exe
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.pdb
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.NodyMainForm.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.RegisterUserControl.resources

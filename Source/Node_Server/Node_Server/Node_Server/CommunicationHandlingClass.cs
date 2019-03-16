@@ -25,8 +25,6 @@ namespace Node_Server
 
                 receivedDataStr.Append(Encoding.ASCII.GetString(buffer, 0, bytesRead));
 
-                Console.WriteLine(bytesRead);
-
                 return receivedDataStr.ToString();
             }
             else
@@ -58,7 +56,12 @@ namespace Node_Server
             }
             return "";
         }
-
+        public static void SendToClient(TcpClient client, string data)
+        {
+            NetworkStream clientNetStream = client.GetStream();
+            byte[] buffer = ASCIIEncoding.ASCII.GetBytes(data);
+            clientNetStream.Write(buffer, 0, buffer.Length);
+        }
         public static string TraceConnection(TcpClient connection)
         {
             string ipEndPoint = ((IPEndPoint)connection.Client.RemoteEndPoint).Address.ToString();

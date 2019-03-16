@@ -73,7 +73,7 @@ namespace Nody
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
-            
+            registerUserControl.BringToFront();
         }
     }
 }

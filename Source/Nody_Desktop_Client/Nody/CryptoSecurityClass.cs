@@ -40,23 +40,10 @@ namespace Nody
             string decryptedString = Encoding.ASCII.GetString(dectyptedBytes);
             return decryptedString;
         }
-        public static string RsaEncrypt(string encryptedData, byte[] key)
-        {
-            byte[] stringBytes = Convert.FromBase64String(encryptedData); // Gets the bytes from the data which is presented as a Base64 string.
-            rSACryptoServiceProvider = new RSACryptoServiceProvider(); // Initializes an instance of the RSACryptoServiceProvider.
-            rSACryptoServiceProvider.ImportParameters(GloabalVariablesClass.clientPrivateKey); //Imports the key parameter from the GlobalVariablesClass.clientPrivateKet parameter
-
-            byte[] decryptedBytes = rSACryptoServiceProvider.Decrypt(stringBytes, false);// Decrypts the bytes without OAEP padding.
-
-            rSACryptoServiceProvider.Clear(); // Clears the RSACryptoServiceProvider.
-            rSACryptoServiceProvider.Dispose(); // Releases all the resources used by RSACryptoServiceProvider.
-
-            return Encoding.Unicode.GetString(decryptedBytes); // Returns the decrypted bytes           
-        }
-        public static string RsaDecrypt(string data, string publicKey)
+        public static string RsaEncrypt(string data)
         {
             rSACryptoServiceProvider = new RSACryptoServiceProvider();
-            rSACryptoServiceProvider.ImportParameters(GetRSAParameters(publicKey));
+            rSACryptoServiceProvider.ImportParameters(GetRSAParameters(GlobalVariablesClass.serverPublicKey));
 
             byte[] stringBytes = Encoding.Unicode.GetBytes(data);
             byte[] encryptedBytes = rSACryptoServiceProvider.Encrypt(stringBytes, false);
@@ -65,6 +52,19 @@ namespace Nody
             rSACryptoServiceProvider.Dispose();
 
             return Convert.ToBase64String(encryptedBytes);
+        }
+        public static string RsaDecrypt(string encryptedData)
+        {
+            byte[] stringBytes = Convert.FromBase64String(encryptedData); // Gets the bytes from the data which is presented as a Base64 string.
+            rSACryptoServiceProvider = new RSACryptoServiceProvider(); // Initializes an instance of the RSACryptoServiceProvider.
+            rSACryptoServiceProvider.ImportParameters(GlobalVariablesClass.clientPrivateKey); //Imports the key parameter from the GlobalVariablesClass.clientPrivateKet parameter
+
+            byte[] decryptedBytes = rSACryptoServiceProvider.Decrypt(stringBytes, false);// Decrypts the bytes without OAEP padding.
+
+            rSACryptoServiceProvider.Clear(); // Clears the RSACryptoServiceProvider.
+            rSACryptoServiceProvider.Dispose(); // Releases all the resources used by RSACryptoServiceProvider.
+
+            return Encoding.Unicode.GetString(decryptedBytes); // Returns the decrypted bytes                       
         }
 
         public static void GenerateCommunicationKeys()
@@ -77,17 +77,17 @@ namespace Nody
             var publicSerializer = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
 
             publicSerializer.Serialize(stringW, publicKey);
-            GloabalVariablesClass.clientPublicKey = stringW.ToString();
+            GlobalVariablesClass.clientPublicKey = stringW.ToString();
             stringW.Flush();
 
-            GloabalVariablesClass.clientPrivateKey = privateKey;
+            GlobalVariablesClass.clientPrivateKey = privateKey;
 
             keyCryptoProvider.Clear();
         }
 
-        private static string GenerateRandomSalt()
+        public static string GenerateKey(int length)
         {
-            StringBuilder saltString = new StringBuilder(22);
+            StringBuilder keyString = new StringBuilder(length);
 
             char[] leagalCharsArray = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234+{}]56789!@#$%^&*()_[;:/?".ToCharArray();
 
@@ -97,22 +97,21 @@ namespace Nody
             {
                 rngStrProvider.GetNonZeroBytes(validData);
 
-                validData = new byte[16];
+                validData = new byte[length];
 
                 rngStrProvider.GetNonZeroBytes(validData);
 
                 foreach (byte currentByte in validData)
                 {
-                    saltString.Append(leagalCharsArray[currentByte % (leagalCharsArray.Length)]);
+                    keyString.Append(leagalCharsArray[currentByte % (leagalCharsArray.Length)]);
                 }
             }
-            return saltString.ToString();
+            return keyString.ToString();
         }
         public static RSAParameters GetRSAParameters(string xmlKeyString)
         {
             StringReader stringReader = new StringReader(xmlKeyString);
-            var keySerializer = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
-
+            var keySerializer = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));            
             RSAParameters keyParamters = (RSAParameters)keySerializer.Deserialize(stringReader);
 
             return keyParamters;
@@ -127,6 +126,11 @@ namespace Nody
                 Padding = PaddingMode.PKCS7,
                 Mode = CipherMode.ECB
             };
+        }
+
+        public static void SyncCommunicationKeys()
+        {
+            GlobalVariablesClass.serverPublicKey = HandleCommunicationClass.ReceiveData();
         }
     }
 }

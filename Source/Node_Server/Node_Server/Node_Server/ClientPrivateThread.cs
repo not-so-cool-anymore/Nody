@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Sockets;
+using System.Text;
 namespace Node_Server
 {
     public class ClientPrivateThread
@@ -11,21 +12,84 @@ namespace Node_Server
             {
                 while (true)
                 {
+                    string[] requestData = DataFormattingClass.IncomingClientDataToArray(client);
+                    string request = requestData[0];
+                    string requestSubData = requestData[1];
+                    string aesSecurityKeyOne = requestData[2];
+
+                    if (request.ToLower().Equals("login"))
+                    {
+                        string[] loginSubDataArray = DataFormattingClass.SubDataToArray(requestSubData);
+                        string username = CryptoSecurityClass.RsaDecrypt(loginSubDataArray[0]);
+                        string password = CryptoSecurityClass.RsaDecrypt(loginSubDataArray[1]);
+                        string clientPublicKey = CryptoSecurityClass.AesDecrypt(loginSubDataArray[2], ASCIIEncoding.ASCII.GetBytes(aesSecurityKeyOne));
+
+                        if (DatabaseFunctions.ValidateUser(username, password) == true)
+                        {
+                            Console.WriteLine(">> Client was validated successfuly");
+                            CommunicationHandling.SendToClient(client, CryptoSecurityClass.RsaEncrypt("101", clientPublicKey));
+                        }
+                        else
+                        {
+                            CommunicationHandling.SendToClient(client, CryptoSecurityClass.RsaEncrypt("102", clientPublicKey));
+                        }
+                    }
+                    else if (request.ToLower().Equals("reg"))
+                    {
+                        string[] loginSubDataArray = DataFormattingClass.SubDataToArray(requestSubData);
+                        string username = CryptoSecurityClass.RsaDecrypt(loginSubDataArray[0]);
+                        string password = CryptoSecurityClass.RsaDecrypt(loginSubDataArray[1]);
+                        string clientPublicKey = CryptoSecurityClass.AesDecrypt(loginSubDataArray[2], ASCIIEncoding.ASCII.GetBytes(aesSecurityKeyOne));
+
+                        if (!DatabaseFunctions.CheckUserDuplicating(username))
+                        {
+                            string passwordSalt = CryptoSecurityClass.GenerateKey(16);
+                            string hashedPassword = CryptoSecurityClass.HashPassword(password, passwordSalt);
+
+                            DatabaseFunctions.InsertUser(username, hashedPassword, passwordSalt);
+                            CommunicationHandling.SendToClient(client, CryptoSecurityClass.RsaEncrypt("104", clientPublicKey));
+                        }
+                        else
+                        {
+                            CommunicationHandling.SendToClient(client, CryptoSecurityClass.RsaEncrypt("105", clientPublicKey)); //There is a user with that username
+                        }
+                        
+                    }
+                    else if (request.ToLower().Equals("get-humid"))
+                    {
+
+                    }
+                    else if (request.ToLower().Equals("get-temp"))
+                    {
+
+                    }
+                    else if(request.ToLower().Equals("sound"))
+                    {
+
+                    }
+                    else if (request.ToLower().Equals("carbon-oxi"))
+                    {
+
+                    }
+                    else
+                    {
+                        Console.WriteLine(">> CLIENT{0} made an invalid request -> {1}", id, request);
+                    }
 
                 }
-
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 RemoveClient(id);
             }
         }
         public static void RemoveClient(int id)
         {
-            GlobalVariables.connectedClients.Remove(GlobalVariables.connectedClients.First(client => client.Id == id ));
-            GlobalVariables.clientsCachedIDs.Add(id);
+            GlobalVariablesClass.connectedClients.Remove(GlobalVariablesClass.connectedClients.First(client => client.Id == id ));
+            GlobalVariablesClass.clientsCachedIDs.Add(id);
 
-            Console.WriteLine(">> CLIENT disconnected the server");
+            Console.WriteLine(">> CLIENT disconnected from the server");
         }
     }
 }

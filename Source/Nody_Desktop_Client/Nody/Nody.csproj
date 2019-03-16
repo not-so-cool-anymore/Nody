@@ -48,13 +48,14 @@
   <ItemGroup>
     <Compile Include="AccountAccessFunctionsClass.cs" />
     <Compile Include="CryptoSecurityClass.cs" />
+    <Compile Include="DataFormattingClass.cs" />
     <Compile Include="EstablishConnectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EstablishConnectionForm.Designer.cs">
       <DependentUpon>EstablishConnectionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GloabalVariablesClass.cs" />
+    <Compile Include="GlobalVariablesClass.cs" />
     <Compile Include="HandleCommunicationClass.cs" />
     <Compile Include="LoginUserControl.cs">
       <SubType>UserControl</SubType>
@@ -68,8 +69,20 @@
     <Compile Include="NodyAuthForm.Designer.cs">
       <DependentUpon>NodyAuthForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NodyMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NodyMainForm.Designer.cs">
+      <DependentUpon>NodyMainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RegisterUserControl.Designer.cs">
+      <DependentUpon>RegisterUserControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EstablishConnectionForm.resx">
       <DependentUpon>EstablishConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NodyAuthForm.resx">
       <DependentUpon>NodyAuthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NodyMainForm.resx">
+      <DependentUpon>NodyMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,6 +104,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegisterUserControl.resx">
+      <DependentUpon>RegisterUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

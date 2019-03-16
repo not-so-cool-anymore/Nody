@@ -9,7 +9,7 @@ namespace Node_Server
     public class ClientsServer
     {
         private static TcpListener clientListeningServer;
-        private static readonly IPAddress clientListeningServerIP = IPAddress.Parse("172.26.17.109");
+        private static readonly IPAddress clientListeningServerIP = IPAddress.Parse("172.26.17.203");
         public static void SetupClientsServer()
         {
             clientListeningServer = new TcpListener(clientListeningServerIP, 1025);
@@ -23,16 +23,16 @@ namespace Node_Server
                 TcpClient node = clientListeningServer.AcceptTcpClient();
 
                 //Checks if there is a free cached id
-                bool hasCached = GlobalVariables.clientsCachedIDs.Any();
+                bool hasCached = GlobalVariablesClass.clientsCachedIDs.Any();
 
-                GlobalVariables.totalLoadCounter++;
+                GlobalVariablesClass.totalLoadCounter++;
 
                 //Gives the free cached id to the client (if there is one)
                 if (hasCached == true)
                 {
                     Thread acceptConnThr = new Thread(() => AcceptConnectionRequest(
                     node,
-                    GlobalVariables.clientsCachedIDs[0], true));
+                    GlobalVariablesClass.clientsCachedIDs[0], true));
 
                     acceptConnThr.Start();
                 }
@@ -44,7 +44,7 @@ namespace Node_Server
                     */
                     Thread acceptConnThr = new Thread(() => AcceptConnectionRequest(
                     node,
-                    GlobalVariables.connectedClientsCounter++, false));
+                    GlobalVariablesClass.connectedClientsCounter++, false));
 
                     //Starts the acceptance thread
                     acceptConnThr.Start();
@@ -53,17 +53,18 @@ namespace Node_Server
         }
         public static void AcceptConnectionRequest(TcpClient clientConnection, int id, bool isCached)
         {
+            CommunicationHandling.SendToClient(clientConnection, GlobalVariablesClass.serverPublicKey);
             if (isCached == true)
             {
                 //Removes the id from the cached ids list, because it was given to a connection
-                GlobalVariables.clientsCachedIDs.RemoveAt(0);
+                GlobalVariablesClass.clientsCachedIDs.RemoveAt(0);
                 Console.WriteLine(">> Cached value was given to CLIENT with ID: " + id);
             }
 
             Console.WriteLine(">> CLIENT was connected: " + id);
 
             //Receives the info about the node system (name, owner, location, etc.)
-            string clientName = CommunicationHandling.ReadNodeData(clientConnection);
+            string clientName = CommunicationHandling.ReadClientData(clientConnection);
             string clientIpEndPoint = CommunicationHandling.TraceConnection(clientConnection);
 
             //Creates new ConnectedNode
@@ -74,11 +75,11 @@ namespace Node_Server
                 false
             );
 
-            GlobalVariables.connectedClients.Add(client);
+            GlobalVariablesClass.connectedClients.Add(client);
 
-            for (int i = 0; i < GlobalVariables.connectedClients.Count; i++)
+            for (int i = 0; i < GlobalVariablesClass.connectedClients.Count; i++)
             {
-                ConnectedClient currClient = GlobalVariables.connectedClients[i];
+                ConnectedClient currClient = GlobalVariablesClass.connectedClients[i];
                 Console.WriteLine(">> CLIENT loop");
 
                 if (currClient.IsActivated == false)
@@ -88,7 +89,7 @@ namespace Node_Server
                     Thread clientPrivateThread = new Thread(() => ClientPrivateThread.HandleClientRequest(clientConnection, id));
                     clientPrivateThread.Start();
 
-                    GlobalVariables.connectedClients[i].IsActivated = true;
+                    GlobalVariablesClass.connectedClients[i].IsActivated = true;
                     Console.WriteLine(">> CLIENT was activated");
                 }
             }

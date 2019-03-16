@@ -23,9 +23,30 @@ namespace Node_Server
         public static string[] IncomingClientDataToArray(TcpClient client)
         {
             string[] requestSplitingKeywordChars = { "<!<Split Them Up>!>" };
-            string[] keysSplitingKeywordChars = { "<key data>" };
+            string[] keysSplitingKeyword = { "<key data>" };
 
-            return keysSplitingKeywordChars; 
+            string receivedFullDataSegment = CommunicationHandling.ReadClientData(client);
+            string[] receivedDataSegments = receivedFullDataSegment.Split(keysSplitingKeyword, StringSplitOptions.RemoveEmptyEntries);
+
+            string securedSegmentZero = receivedDataSegments[0];
+
+            string aesSecurityKeyZero = CryptoSecurityClass.RsaDecrypt(receivedDataSegments[1]);
+            string aesSecurityKeyOne = CryptoSecurityClass.RsaDecrypt(receivedDataSegments[2]);
+
+            string decryptedSegmentZero = CryptoSecurityClass.AesDecrypt(securedSegmentZero, ASCIIEncoding.ASCII.GetBytes(aesSecurityKeyZero));
+
+            string[] request = decryptedSegmentZero.Split(requestSplitingKeywordChars, StringSplitOptions.RemoveEmptyEntries);
+
+            return new string[] { request[0], request[1], aesSecurityKeyOne };
+        }
+        public static string[] SubDataToArray(string subData)
+        {
+
+            string[] splitingKeywordChars = { "<sub split>" };
+
+            string[] subDataArray = subData.Split(splitingKeywordChars, StringSplitOptions.RemoveEmptyEntries);
+
+            return subDataArray;
         }
     }
 }
