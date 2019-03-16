@@ -1,7 +1,7 @@
 import serial
 import sys
 import os
-from . import check_port as checker
+import src.check_port as checker
 import time as t
 
 

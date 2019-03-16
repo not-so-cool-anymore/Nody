@@ -2,9 +2,9 @@ import socket
 import time
 import  os
 import traceback
-from . import read_data as read
-from . import get_sys_data as gsd
-from . import send_to_remote as r_send
+import src.read_data as read
+import src.get_sys_data as gsd
+import src.send_to_remote as r_send
 
 ip_address = ("127.0.0.1", 1024)
 
