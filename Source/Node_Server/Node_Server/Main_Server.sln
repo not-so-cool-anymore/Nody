@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main_Server", "Node_Server\Main_Server.csproj", "{AFB065B4-66B9-421A-8542-B98D93BBF085}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFB065B4-66B9-421A-8542-B98D93BBF085}.Debug|x86.ActiveCfg = Debug|x86
+		{AFB065B4-66B9-421A-8542-B98D93BBF085}.Debug|x86.Build.0 = Debug|x86
+		{AFB065B4-66B9-421A-8542-B98D93BBF085}.Release|x86.ActiveCfg = Release|x86
+		{AFB065B4-66B9-421A-8542-B98D93BBF085}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		BaseDirectory = Main_Server
+	EndGlobalSection
+EndGlobal
