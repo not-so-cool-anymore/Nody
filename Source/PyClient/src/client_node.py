@@ -1,9 +1,9 @@
 import socket
 import os
 import traceback
-import src.read_data as read
-import src.get_sys_data as gsd
-import src.send_to_remote as r_send
+import read_data as read
+import get_sys_data as gsd
+import send_to_remote as r_send
 
 ip_address = ("127.0.0.1", 1024)
 
@@ -26,7 +26,7 @@ try:
     # Starts data reading and sending
     while 1:
         received_data = read.read()
-        for i in range(received_data.count()):
+        for i in range(len(received_data)):
             r_send.send_to_remote(node_socket, received_data[i])
 
 except Exception as exc:
