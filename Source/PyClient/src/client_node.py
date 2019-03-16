@@ -2,9 +2,9 @@ import socket
 import time
 import  os
 import traceback
-import src.read_data as read
-import src.get_sys_data as gsd
-import src.send_to_remote as r_send
+from . import read_data as read
+from . import get_sys_data as gsd
+from . import send_to_remote as r_send
 
 ip_address = ("127.0.0.1", 1024)
 
@@ -20,18 +20,13 @@ try:
 
     r_send.send_to_remote(node_socket, location_data)
 
-    r_send.send_to_remote(node_socket, location_data)
+    r_send.send_to_remote(node_socket, name_data)
 
-    r_send.send_to_remote(node_socket, location_data)
+    r_send.send_to_remote(node_socket, device_owner_data)
     #node_socket.send(location_data.encode())
     #node_socket.send(name_data.encode())
     # Starts data reading and sending
     #while 1:
-    r_send.send_to_remote(node_socket, name_data)
-    r_send.send_to_remote(node_socket, "sdasdsd")
-    r_send.send_to_remote(node_socket, "als")
-   # r_send.send_to_remote(node_socket, name_data)
-
         # for i in range(received_data.count()):
             # client_socket.sendall(received_data[i])
 

@@ -1,5 +1,3 @@
-
-
 def get_sys_data(data_type):
     data_array = []
 
@@ -9,5 +7,5 @@ def get_sys_data(data_type):
 
     for i in range(len(data_array)):
         if data_type in data_array[i]:
-            return data_array[i].split("=",1)[1]
+            return data_array[i].split("=", 1)[1]
 
