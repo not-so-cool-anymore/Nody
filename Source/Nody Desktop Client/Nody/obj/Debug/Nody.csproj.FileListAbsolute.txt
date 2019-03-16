@@ -1,0 +1,10 @@
+C:\Users\Ivan\source\repos\Nody\Nody\bin\Debug\Nody.exe.config
+C:\Users\Ivan\source\repos\Nody\Nody\bin\Debug\Nody.exe
+C:\Users\Ivan\source\repos\Nody\Nody\bin\Debug\Nody.pdb
+C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.Nody_Auth.resources
+C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.Properties.Resources.resources
+C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.csproj.GenerateResource.cache
+C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.exe
+C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.pdb
+C:\Users\Ivan\source\repos\Nody\Nody\obj\Debug\Nody.LoginUserControl.resources
