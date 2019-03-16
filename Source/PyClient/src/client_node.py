@@ -1,7 +1,9 @@
 import socket
 import time
-import  os
+import sys
+import os
 import traceback
+sys.path.append("/home/Nody/Source/PyClient/src")
 import src.read_data as read
 import src.get_sys_data as gsd
 import src.send_to_remote as r_send

@@ -1,6 +1,6 @@
 import serial
-import sys, os
-sys.path.append("/home/Nody/Source/PyClient/src")
+import sys
+import os
 import src.check_port as checker
 import time as t
 
