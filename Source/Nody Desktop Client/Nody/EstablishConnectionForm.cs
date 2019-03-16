@@ -26,8 +26,7 @@ namespace Nody
             string deviceName = System.Environment.MachineName;
 
             HandleCommunicationClass.SendData(deviceName);
-
         }
     
-    }
+    } 
 }
