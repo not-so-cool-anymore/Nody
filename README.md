@@ -1,2 +1,2 @@
 # Nody
-An open source cluster of sensors
+An open source system connected clusters of sensors 
