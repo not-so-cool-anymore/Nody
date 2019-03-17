@@ -57,18 +57,20 @@ namespace Node_Server
 
         public static string RsaDecrypt(string encryptedData)
         {
-            byte[] stringBytes = Convert.FromBase64String(encryptedData); // Gets the bytes from the data which is presented as a Base64 string.
-            rSACryptoServiceProvider = new RSACryptoServiceProvider(); // Initializes an instance of the RSACryptoServiceProvider.
-            rSACryptoServiceProvider.ImportParameters(GlobalVariablesClass.serverPrivateKey); //Imports the key parameter from the GlobalVariablesClass.clientPrivateKet parameter
-
-            byte[] decryptedBytes = rSACryptoServiceProvider.Decrypt(stringBytes, false);// Decrypts the bytes without OAEP padding.
-
-            rSACryptoServiceProvider.Clear(); // Clears the RSACryptoServiceProvider.
-            rSACryptoServiceProvider.Dispose(); // Releases all the resources used by RSACryptoServiceProvider.
-
-            return Encoding.Unicode.GetString(decryptedBytes); // Returns the decrypted bytes  
-
-
+            // Gets the bytes from the data which is presented as a Base64 string
+            byte[] stringBytes = Convert.FromBase64String(encryptedData);
+            // Initializes an instance of the RSACryptoServiceProvider
+            rSACryptoServiceProvider = new RSACryptoServiceProvider();
+            //Imports the key parameter from the GlobalVariablesClass.clientPrivateKet parameter
+            rSACryptoServiceProvider.ImportParameters(GlobalVariablesClass.serverPrivateKey);
+            // Decrypts the bytes without OAEP padding
+            byte[] decryptedBytes = rSACryptoServiceProvider.Decrypt(stringBytes, false);
+            // Clears the RSACryptoServiceProvider
+            rSACryptoServiceProvider.Clear();
+            // Releases all the resources used by RSACryptoServiceProvider
+            rSACryptoServiceProvider.Dispose();
+            // Returns the decrypted bytes
+            return Encoding.Unicode.GetString(decryptedBytes);   
         }
 
         public static void GenerateCommunicationKeys()
@@ -91,10 +93,12 @@ namespace Node_Server
 
         public static string GenerateKey(int length)
         {
+            // Imtitates StringBuilder object
             StringBuilder keyString = new StringBuilder(length);
-
+            // Creates a hard coded char array that contains sequence of letters
             char[] leagalCharsArray = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234+{}]56789!@#$%^&*()_[;:/?".ToCharArray();
 
+            // A valid data is 1 byte
             byte[] validData = new byte[1];
 
             using (RNGCryptoServiceProvider rngStrProvider = new RNGCryptoServiceProvider())

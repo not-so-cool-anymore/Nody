@@ -78,7 +78,7 @@
             this.requestDatasetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.requestDatasetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.requestDatasetBtn.ForeColor = System.Drawing.Color.Transparent;
-            this.requestDatasetBtn.Location = new System.Drawing.Point(425, 3);
+            this.requestDatasetBtn.Location = new System.Drawing.Point(423, 4);
             this.requestDatasetBtn.Name = "requestDatasetBtn";
             this.requestDatasetBtn.Size = new System.Drawing.Size(139, 106);
             this.requestDatasetBtn.TabIndex = 3;
@@ -142,11 +142,11 @@
             this.homePageUserControl.Size = new System.Drawing.Size(1090, 413);
             this.homePageUserControl.TabIndex = 1;
             // 
-            // requestDatasetUserControl1
+            // requestDatasetUserControl
             // 
             this.requestDatasetUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.requestDatasetUserControl.Location = new System.Drawing.Point(0, 112);
-            this.requestDatasetUserControl.Name = "requestDatasetUserControl1";
+            this.requestDatasetUserControl.Name = "requestDatasetUserControl";
             this.requestDatasetUserControl.Size = new System.Drawing.Size(1090, 413);
             this.requestDatasetUserControl.TabIndex = 3;
             // 

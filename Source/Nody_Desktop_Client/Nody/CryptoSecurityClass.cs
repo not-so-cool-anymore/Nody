@@ -55,20 +55,25 @@ namespace Nody
         }
         public static string RsaDecrypt(string encryptedData)
         {
-            byte[] stringBytes = Convert.FromBase64String(encryptedData); // Gets the bytes from the data which is presented as a Base64 string.
-            rSACryptoServiceProvider = new RSACryptoServiceProvider(); // Initializes an instance of the RSACryptoServiceProvider.
-            rSACryptoServiceProvider.ImportParameters(GlobalVariablesClass.clientPrivateKey); //Imports the key parameter from the GlobalVariablesClass.clientPrivateKet parameter
+            // Gets the bytes from the data which is presented as a Base64 string
+            byte[] stringBytes = Convert.FromBase64String(encryptedData);
 
-            byte[] decryptedBytes = rSACryptoServiceProvider.Decrypt(stringBytes, false);// Decrypts the bytes without OAEP padding.
-
-            rSACryptoServiceProvider.Clear(); // Clears the RSACryptoServiceProvider.
-            rSACryptoServiceProvider.Dispose(); // Releases all the resources used by RSACryptoServiceProvider.
-
-            return Encoding.Unicode.GetString(decryptedBytes); // Returns the decrypted bytes                       
+            // Initializes an instance of the RSACryptoServiceProvider
+            rSACryptoServiceProvider = new RSACryptoServiceProvider();
+            //Imports the key parameter from the GlobalVariablesClass.clientPrivateKet parameter
+            rSACryptoServiceProvider.ImportParameters(GlobalVariablesClass.clientPrivateKey);
+            // Decrypts the bytes without OAEP padding        
+            byte[] decryptedBytes = rSACryptoServiceProvider.Decrypt(stringBytes, false);
+            // Clears the RSACryptoServiceProvider
+            rSACryptoServiceProvider.Clear();
+            // Releases all the resources used by RSACryptoServiceProvider
+            rSACryptoServiceProvider.Dispose();
+             // Returns the decrypted bytes
+            return Encoding.Unicode.GetString(decryptedBytes);                       
         }
 
         public static void GenerateCommunicationKeys()
-        {
+        {            
             StringWriter stringW = new StringWriter();
             RSACryptoServiceProvider keyCryptoProvider = new RSACryptoServiceProvider(4096);
             var publicKey = keyCryptoProvider.ExportParameters(false);
@@ -108,6 +113,7 @@ namespace Nody
             }
             return keyString.ToString();
         }
+
         public static RSAParameters GetRSAParameters(string xmlKeyString)
         {
             StringReader stringReader = new StringReader(xmlKeyString);

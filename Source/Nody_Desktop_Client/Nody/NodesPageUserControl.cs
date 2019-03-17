@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nody
@@ -51,15 +52,23 @@ namespace Nody
             }
         }
 
-        private void SeekDataBtn_Click(object sender, EventArgs e)
+        private  void SeekDataBtn_Click(object sender, EventArgs e)
         {
-            GetTemperature();
-            GetHumidity();
-            GetSound();
-            CompareTempHum();
+            if (nodesList.Items.Count<1)
+            {
+                MessageBox.Show("You haven't selected a node." + Environment.NewLine + "Pleas doubleclick the Nodes box to check if there are availabe ones.");
+            }
+            else
+            {
+                GetHumidity();
+                GetTemperature();
+                GetSound();
+                CompareTempHum();
+            }
         }
 
-        public void GetHumidity()
+  
+        public async void GetHumidity()
         {
             string nodeName = nodesList.GetItemText(nodesList.SelectedItem);
 
@@ -84,7 +93,7 @@ namespace Nody
                 {
                     if (!decryptedNodeCollection[i].Equals(""))
                     {
-                        humidityDataChart.Series["Humidity"].Points.AddXY(i + 1, float.Parse(decryptedNodeCollection[i]));
+                        humidityDataChart.Series["Humidity"].Points.AddXY(i + 1, float.Parse(decryptedNodeCollection.ToArray()[i]));
                     }
                 }
             }
@@ -114,7 +123,7 @@ namespace Nody
                 {
                     if (!decryptedNodeCollection[i].Equals(""))
                     {
-                        soundDataChart.Series["Sound"].Points.AddXY(i + 1, float.Parse(decryptedNodeCollection[i]));
+                        soundDataChart.Series["Sound"].Points.AddXY(i + 1, float.Parse(decryptedNodeCollection.ToArray()[i]));
                     }
                 }
             }
@@ -145,7 +154,7 @@ namespace Nody
                 {
                     if (!decryptedNodeCollection[i].Equals(""))
                     {
-                        tempDataChart.Series["Temperature"].Points.AddXY(i + 1, float.Parse(decryptedNodeCollection[i]));
+                        tempDataChart.Series["Temperature"].Points.AddXY(i + 1, float.Parse(decryptedNodeCollection.ToArray()[i]));
                     }
                 }
             }
@@ -157,11 +166,11 @@ namespace Nody
             {
                 if (!cachedTemp[i].Equals(""))
                 {
-                    comparingChart.Series["Temperature"].Points.AddXY(i + 1, float.Parse(cachedTemp[i]));
+                    comparingChart.Series["Temperature"].Points.AddXY(i + 1, float.Parse(cachedTemp.ToArray()[i]));
                 }
                 if (!cachedHumid[i].Equals(""))
                 {
-                    comparingChart.Series["Humidity"].Points.AddXY(i + 1, float.Parse(cachedHumid[i]));
+                    comparingChart.Series["Humidity"].Points.AddXY(i + 1, float.Parse(cachedHumid.ToArray()[i]));
                 }
             }
            
