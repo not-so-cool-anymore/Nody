@@ -16,7 +16,7 @@ def read():
             try:
                 serial_conn = serial.Serial("/dev/ttyUSB0", 9600)
 
-                for i in range(2):
+                for i in range(3):
                     if serial_conn.isOpen():
                         received_temp = serial_conn.readline().rstrip().decode("ascii")
                         received_data.append(received_temp)
