@@ -21,3 +21,7 @@ C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.exe
 C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.pdb
 C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.NodyMainForm.resources
 C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.RegisterUserControl.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.HomePageUserControl.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.NodesPageUserControl.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.RequestDatasetUserControl.resources
+C:\Users\Ivan\Desktop\Nody\Source\Nody_Desktop_Client\Nody\obj\Debug\Nody.csprojAssemblyReference.cache

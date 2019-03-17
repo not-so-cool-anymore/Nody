@@ -67,19 +67,16 @@ namespace Node_Server
             Console.WriteLine(">> NODE was connected: " + id);
 
             //Receives the info about the node system (name, owner, location, etc.)
-            string nodeLocation = CommunicationHandling.ReadNodeData(nodeConnection);
-            string nodeName = CommunicationHandling.ReadNodeData(nodeConnection);
-            string nodeOwner = CommunicationHandling.ReadNodeData(nodeConnection);
-            string nodeIpEndPoint = CommunicationHandling.TraceConnection(nodeConnection);
+            string nodeLocation = CommunicationHandling.ReadNodeData(nodeConnection).Replace("\n", "");
+            string nodeName = CommunicationHandling.ReadNodeData(nodeConnection).Replace("\n", "");
+            string nodeOwner = CommunicationHandling.ReadNodeData(nodeConnection).Replace("\n", "");
+            string nodeIpEndPoint = CommunicationHandling.TraceConnection(nodeConnection).Replace("\n", "");
 
-            if (!Directory.Exists(@"\nodes\" + nodeName + "<-->" + nodeLocation))
+            if (!Directory.Exists(@"\nodes\" + nodeName + "00" + nodeLocation))
             {
-                Directory.CreateDirectory(@"\nodes\" + nodeName + "<-->" + nodeLocation);
-                File.Create(@"\nodes\" + nodeName + "<-->" + nodeLocation + "humid.txt");
-                File.Create(@"\nodes\" + nodeName + "<-->" + nodeLocation + "temp.txt");
-                File.Create(@"\nodes\" + nodeName + "<-->" + nodeLocation + "sound.txt");
-
+                Directory.CreateDirectory(@"\nodes\" + nodeName + "00" + nodeLocation);
             }
+
             //Creates new ConnectedNode
             ConnectedNode node = new ConnectedNode(
             false,

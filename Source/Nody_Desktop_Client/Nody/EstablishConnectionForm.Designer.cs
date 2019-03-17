@@ -35,11 +35,11 @@
             // connectingLabel
             // 
             this.connectingLabel.AutoSize = true;
-            this.connectingLabel.Font = new System.Drawing.Font("Verdana", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectingLabel.Font = new System.Drawing.Font("Verdana", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.connectingLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.connectingLabel.Location = new System.Drawing.Point(17, 71);
+            this.connectingLabel.Location = new System.Drawing.Point(91, 91);
             this.connectingLabel.Name = "connectingLabel";
-            this.connectingLabel.Size = new System.Drawing.Size(394, 78);
+            this.connectingLabel.Size = new System.Drawing.Size(226, 45);
             this.connectingLabel.TabIndex = 1;
             this.connectingLabel.Text = "Connecting";
             // 

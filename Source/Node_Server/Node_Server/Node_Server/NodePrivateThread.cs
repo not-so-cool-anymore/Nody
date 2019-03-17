@@ -22,22 +22,38 @@ namespace Node_Server
 
                     if (dataType.Equals("temp"))
                     {
-                        float tempValueAsFloat = float.Parse(dataValue);
-                        GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedTempData.Add(tempValueAsFloat);
-                        File.WriteAllText(@"\nodes\" + name + "<-->" + location + "temp.txt", dataValue + Environment.NewLine);
-                        
+
+                        try
+                        {
+                            float tempValueAsFloat = float.Parse(dataValue);
+                            GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedTempData.Add(tempValueAsFloat);
+                            File.AppendAllText(@"\nodes\" + name + "00" + location + "temp.txt", dataValue + Environment.NewLine);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
                     }
                     else if (dataType.Equals("humid"))
                     {
-                        float humidValueAsFloat = float.Parse(dataValue);
-                        GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedHumidData.Add(humidValueAsFloat);
-                        File.WriteAllText(@"\nodes\" + name + "<-->" + location + "humid.txt", dataValue + Environment.NewLine);
-                        
+                        try
+                        {
+                            float humidValueAsFloat = float.Parse(dataValue);
+                            GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedHumidData.Add(humidValueAsFloat);
+                            File.AppendAllText(@"\nodes\" + name + "00" + location + "humid.txt", dataValue + Environment.NewLine);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
                     }
                     else if (dataType.Equals("sound"))
                     {
-                        GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedSoundData.Add(dataValue);
-                        File.WriteAllText(@"\nodes\" + name + "<-->" + location + "sound.txt", dataValue + Environment.NewLine);
+                        try {
+                            GlobalVariablesClass.connectedNodes.First(cNode => cNode.Name.Equals(name)).cachedSoundData.Add(float.Parse(dataValue));
+                            File.AppendAllText(@"\nodes\" + name + "00" + location + "sound.txt", dataValue + Environment.NewLine);
+                        }
+                        catch(Exception ex)
+                        {
+                        }
                     }
                     else
                     {

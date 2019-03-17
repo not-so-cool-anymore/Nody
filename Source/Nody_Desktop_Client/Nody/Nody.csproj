@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,11 +58,23 @@
     </Compile>
     <Compile Include="GlobalVariablesClass.cs" />
     <Compile Include="HandleCommunicationClass.cs" />
+    <Compile Include="HomePageUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HomePageUserControl.Designer.cs">
+      <DependentUpon>HomePageUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="LoginUserControl.Designer.cs">
       <DependentUpon>LoginUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NodesPageUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NodesPageUserControl.Designer.cs">
+      <DependentUpon>NodesPageUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="NodyAuthForm.cs">
       <SubType>Form</SubType>
@@ -83,11 +96,23 @@
     <Compile Include="RegisterUserControl.Designer.cs">
       <DependentUpon>RegisterUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="RequestDatasetUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RequestDatasetUserControl.Designer.cs">
+      <DependentUpon>RequestDatasetUserControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EstablishConnectionForm.resx">
       <DependentUpon>EstablishConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HomePageUserControl.resx">
+      <DependentUpon>HomePageUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginUserControl.resx">
       <DependentUpon>LoginUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NodesPageUserControl.resx">
+      <DependentUpon>NodesPageUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NodyAuthForm.resx">
       <DependentUpon>NodyAuthForm.cs</DependentUpon>
@@ -106,6 +131,9 @@
     </Compile>
     <EmbeddedResource Include="RegisterUserControl.resx">
       <DependentUpon>RegisterUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestDatasetUserControl.resx">
+      <DependentUpon>RequestDatasetUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -14,7 +14,7 @@ namespace Node_Server
         public TcpClient nodeConnection;
         public List<float> cachedHumidData = new List<float>();
         public List<float> cachedTempData = new List<float>();
-        public List<string> cachedSoundData = new List<string>();
+        public List<float> cachedSoundData = new List<float>();
 
         public ConnectedNode(bool isActivated, int id, string name, string location, string owner, string ipEndPoint)
         {

@@ -25,6 +25,7 @@ namespace Nody
                 GlobalVariablesClass.clientNetStream = GlobalVariablesClass.client.GetStream();
 
                 CryptoSecurityClass.SyncCommunicationKeys();
+
                 string deviceName = System.Environment.MachineName;
 
                 HandleCommunicationClass.SendData(deviceName);
